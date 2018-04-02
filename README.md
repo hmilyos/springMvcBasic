@@ -1,2 +1,2 @@
-# springMvcVasic
-springMvcVasic基础
+# springMvcBasic
+springMvcBasic基础
