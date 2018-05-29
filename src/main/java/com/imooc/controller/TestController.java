@@ -87,7 +87,7 @@ public class TestController {
 
     @RequestMapping(value = "checkInfo.do")
     @ResponseBody
-    public String checkInfo(@RequestBody CheckInfo checkInfo){
+    public String checkInfo(/*@RequestBody*/ CheckInfo checkInfo){
         if(checkInfo != null && checkInfo.getContrastData() != null){
             return "listSize:"+ checkInfo.getContrastData().size() + "  " ;
         }
