@@ -1,5 +1,6 @@
 package com.imooc.controller;
 
+import com.imooc.model.CheckInfo;
 import com.imooc.object.*;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.http.HttpRequest;
@@ -80,6 +81,17 @@ public class TestController {
     @ResponseBody
     public String listAndString(@RequestBody ListAndString listAndString){
         return "listSize:"+listAndString.getUsers().size() + "  " + listAndString.toString();
+    }
+
+
+
+    @RequestMapping(value = "checkInfo.do")
+    @ResponseBody
+    public String checkInfo(@RequestBody CheckInfo checkInfo){
+        if(checkInfo != null && checkInfo.getContrastData() != null){
+            return "listSize:"+ checkInfo.getContrastData().size() + "  " ;
+        }
+        return "Error";
     }
 
 
