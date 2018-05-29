@@ -76,6 +76,14 @@ public class TestController {
         return "listSize:"+userListForm.getUsers().size() + "  " + userListForm.toString();
     }
 
+    @RequestMapping(value = "listAndString.do")
+    @ResponseBody
+    public String listAndString(@RequestBody ListAndString listAndString){
+        return "listSize:"+listAndString.getUsers().size() + "  " + listAndString.toString();
+    }
+
+
+
     //TODO http://localhost:8080/set.do?users[0].name=Tom&users[1].name=Lucy
         /* size为2*/
     //TODO http://localhost:8080/set.do?users[0].name=Tom&users[20].name=Lucy

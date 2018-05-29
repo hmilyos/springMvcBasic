@@ -5,27 +5,46 @@ import com.imooc.common.JsonUtil;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by geely on 2015/11/22.
- */
-public class UserListForm {
+public class ListAndString {
+
     private List<User> users;
+
+    private String inputText;
 
     public List<User> getUsers() {
         return users;
     }
+
     public void setUsers(List<User> users) {
         this.users = users;
     }
+
+    public String getInputText() {
+        return inputText;
+    }
+
+    public void setInputText(String inputText) {
+        this.inputText = inputText;
+    }
+
+    public ListAndString() {
+    }
+
+    public ListAndString(List<User> users, String inputText) {
+        this.users = users;
+        this.inputText = inputText;
+    }
+
     @Override
     public String toString() {
-        return "UserListForm{" +
+        return "ListAndString{" +
                 "users=" + users +
+                ", inputText='" + inputText + '\'' +
                 '}';
     }
 
     public static void main(String[] args) {
-       /* List<User> users = new ArrayList<User>();
+        List<User> users = new ArrayList<User>();
         for(int i = 0; i < 2; i++){
             User user = new User();
             user.setName("tom" + i);
@@ -36,8 +55,9 @@ public class UserListForm {
             user.setContactInfo(contactInfo);
             users.add(user);
         }
-        UserListForm userListForm = new UserListForm();
-        userListForm.setUsers(users);
-        System.out.println(JsonUtil.objToString(userListForm));*/
+        ListAndString listAndString = new ListAndString();
+        listAndString.setUsers(users);
+        listAndString.setInputText("hello");
+        System.out.println(JsonUtil.objToString(listAndString));
     }
 }
