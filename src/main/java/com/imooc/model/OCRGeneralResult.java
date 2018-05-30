@@ -25,9 +25,17 @@ public class OCRGeneralResult {
 	private int errorcode; // 返回状态值
 	private String errormsg; // 返回错误消息
 	private ArrayList<OCRGeneralItem> items; // 识别出的所有字段信息每个字段包括
+	private String session_id; // 保留字段，目前不使用
 	
 	public OCRGeneralResult(){
 		
+	}
+
+	public OCRGeneralResult(int errorcode, String errormsg, ArrayList<OCRGeneralItem> items, String session_id) {
+		this.errorcode = errorcode;
+		this.errormsg = errormsg;
+		this.items = items;
+		this.session_id = session_id;
 	}
 
 	public int getErrorcode() {
@@ -62,5 +70,5 @@ public class OCRGeneralResult {
 		this.session_id = session_id;
 	}
 
-	private String session_id; // 保留字段，目前不使用
+
 }

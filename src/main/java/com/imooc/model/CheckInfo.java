@@ -44,6 +44,10 @@ public class CheckInfo {
 	public void setContrastData(List<OCRGeneralResult> contrastData) {
 		this.contrastData = contrastData;
 	}
+
+	public CheckInfo(){
+
+	}
 	public CheckInfo(String inputContents, String generalResult,
 			List<OCRGeneralResult> contrastData) {
 		super();

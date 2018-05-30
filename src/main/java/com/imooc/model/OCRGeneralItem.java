@@ -24,7 +24,9 @@ public class OCRGeneralItem {
 
 	private String itemstring; // 字段字符串
 
-	private Object itemcoord; // 字段在图像中的像素坐标，包括左上角坐标x,y，以及宽、高width, height
+	private OCRItemcoord itemcoord; // 字段在图像中的像素坐标，包括左上角坐标x,y，以及宽、高width, height
+
+	private ArrayList<OCRGeneralWord> words; // 字段识别出来的每个字的信息，包括具体的字character，以及字对应的置信度confidence
 
 	public String getItemstring() {
 		return itemstring;
@@ -34,11 +36,11 @@ public class OCRGeneralItem {
 		this.itemstring = itemstring;
 	}
 
-	public Object getItemcoord() {
+	public OCRItemcoord getItemcoord() {
 		return itemcoord;
 	}
 
-	public void setItemcoord(Object itemcoord) {
+	public void setItemcoord(OCRItemcoord itemcoord) {
 		this.itemcoord = itemcoord;
 	}
 
@@ -50,6 +52,12 @@ public class OCRGeneralItem {
 		this.words = words;
 	}
 
-	private ArrayList<OCRGeneralWord> words; // 字段识别出来的每个字的信息，包括具体的字character，以及字对应的置信度confidence
+	public OCRGeneralItem() {
+	}
 
+	public OCRGeneralItem(String itemstring, OCRItemcoord itemcoord, ArrayList<OCRGeneralWord> words) {
+		this.itemstring = itemstring;
+		this.itemcoord = itemcoord;
+		this.words = words;
+	}
 }
