@@ -41,8 +41,8 @@
 
   <servlet-mapping>
     <servlet-name>dispatcher</servlet-name>
-    <url-pattern>*.do</url-pattern>
-    <!--<url-pattern>/</url-pattern>--> <!--适用restful-->
+    <!--<url-pattern>*.do</url-pattern>-->
+    <url-pattern>/</url-pattern> <!--适用restful-->
   </servlet-mapping>
 
 </web-app>

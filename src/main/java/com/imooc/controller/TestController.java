@@ -701,7 +701,8 @@ public class TestController {
     @RequestMapping(value = "checkInfo.do")
     @ResponseBody
     public String checkInfo(@RequestBody CheckInfo checkInfo){
-
+        //通过json传送过来，如果json里面有不是CheckInfo里面的字段，会报错，
+        //                  如果json里面的字段比CheckInfo里面的少，但是json里面的字段能对上CheckInfo就不会报错
         if(checkInfo != null && checkInfo.getContrastData() != null){
             return "listSize:"+ checkInfo.getContrastData().size() + "  " ;
         }
@@ -711,6 +712,7 @@ public class TestController {
     @RequestMapping(value = "form/checkInfo.do")
     @ResponseBody
     public String checkInfo(HttpServletRequest request){
+            //通过form提交，参数多了少了少了，不会报错
         String contrastData = request.getParameter("contrastData");
         String inputContents = request.getParameter("inputContents");
         String generalResult = request.getParameter("generalResult");
@@ -722,6 +724,17 @@ public class TestController {
         return "Error";
     }
 
+    @RequestMapping(value = "key/checkInfo.do")
+    @ResponseBody   //form提交的另一种获取方式
+    public String checkInfo(String contrastData, String inputContents, String generalResult){
+        //参数多了少了少了，不会报错
+        List<OCRGeneralResult> list = JsonUtil.stringToObj(contrastData, ArrayList.class, OCRGeneralResult.class);
+
+        if(list != null){
+            return "listSize:"+ list.size() + "  " ;
+        }
+        return "Error";
+    }
 
 
     //TODO http://localhost:8080/set.do?users[0].name=Tom&users[1].name=Lucy
