@@ -1,5 +1,7 @@
 package com.imooc.controller;
 
+
+import com.alibaba.fastjson.JSONObject;
 import com.imooc.common.JsonUtil;
 import com.imooc.model.CheckInfo;
 import com.imooc.model.OCRGeneralResult;
@@ -7,14 +9,20 @@ import com.imooc.object.*;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Enumeration;
 import java.util.List;
 
 /**
@@ -695,19 +703,38 @@ public class TestController {
      }
 
 
-     * @param checkInfo
+     * @param
      * @return
      */
+
     @RequestMapping(value = "checkInfo.do")
     @ResponseBody
-    public String checkInfo(@RequestBody CheckInfo checkInfo){
+    public String checkInfo(@RequestBody CheckInfo checkInfo, HttpServletRequest request){
         //通过json传送过来，如果json里面有不是CheckInfo里面的字段，会报错，
         //                  如果json里面的字段比CheckInfo里面的少，但是json里面的字段能对上CheckInfo就不会报错
         if(checkInfo != null && checkInfo.getContrastData() != null){
+
             return "listSize:"+ checkInfo.getContrastData().size() + "  " ;
         }
         return "Error";
     }
+
+    @RequestMapping(value = "testJson.do")  //@RequestBody JSONObject jsonObject
+    @ResponseBody
+    public String testJson(@RequestBody JSONObject jsonObject){
+        //通过json传送过来，如果json里面有不是CheckInfo里面的字段，会报错，
+        //                  如果json里面的字段比CheckInfo里面的少，但是json里面的字段能对上CheckInfo就不会报错
+        if(jsonObject != null){
+            CheckInfo checkInfo =  JSONObject.toJavaObject(jsonObject, CheckInfo.class);
+            CheckInfo checkInfo1 = JsonUtil.stringToObj(jsonObject.toJSONString(), CheckInfo.class);
+            if(checkInfo != null) {
+                return "listSize: " + checkInfo.getContrastData().size();
+            }
+
+        }
+        return "Error";
+    }
+
 
     @RequestMapping(value = "form/checkInfo.do")
     @ResponseBody
@@ -859,6 +886,7 @@ public class TestController {
     public String converter(Boolean bool){
         return bool.toString();
     }
+
 
 
 }

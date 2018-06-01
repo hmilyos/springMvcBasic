@@ -2,6 +2,7 @@ package com.imooc.object;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import java.util.Date;
 
 /**
  * Created by geely on 2015/11/22.
