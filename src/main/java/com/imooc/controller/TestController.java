@@ -60,6 +60,12 @@ public class TestController {
         return sbf.toString();
     }
 
+    @RequestMapping(value = "testerror")
+    @ResponseBody
+    public String notFoundError(){
+        return "404 error";
+    }
+
     //todo http://localhost:8080/object.do?name=Tom&age=10
         /* 输出的user和admin都是一样的*/
     //TODO http://localhost:8080/object.do?name=Tom&age=10&contactInfo.phone=10086

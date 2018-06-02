@@ -5,6 +5,14 @@
          id="WebApp_ID" version="2.5">
 
   <display-name>Archetype Created Web Application</display-name>
+
+  <error-page>
+
+    <error-code>404</error-code>
+
+    <location>/testerror</location>
+
+  </error-page>
   <context-param>
     <param-name>contextConfigLocation</param-name>
     <param-value>
